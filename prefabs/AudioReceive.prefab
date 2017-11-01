@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545433635521504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fb1246a89222854cac108ec0bd94f17, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c9dcb62b1771d442887cc3a75535afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
@@ -138,10 +138,9 @@ MonoBehaviour:
   remoteAddress: 
   remotePort: 0
   useMatchmakingServer: 1
-  isSender: 1
+  isSender: 0
   _serverHostname: mm.openimpress.org
   _serverPort: 6312
-  prefix: 
 --- !u!114 &114951136016287336
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,20 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using oi.core.network;
 
 namespace oi.plugin.audio {
 
 	// Sample and audio from mic and stream to network
-	[RequireComponent(typeof(IMPRESS_UDPClient))]
+	[RequireComponent(typeof(UDPConnector))]
 	public class AudioSend : MonoBehaviour {
 
 		public int recFreq = 44100;
-		private IMPRESS_UDPClient oiudp;
+		private UDPConnector oiudp;
 		private AudioClip mic;
 		private int lastRecSample = 0;
 
 		void Start () {
-        	oiudp = GetComponent<IMPRESS_UDPClient>();
+        	oiudp = GetComponent<UDPConnector>();
 			oiudp.isSender = true;
 			mic = Microphone.Start(null, true, 60, recFreq);
 		}

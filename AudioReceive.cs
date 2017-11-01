@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
+using oi.core.network;
 
 namespace oi.plugin.audio {
 	
 	// Parse & play audio stream from network
-	[RequireComponent(typeof(IMPRESS_UDPClient))]
+	[RequireComponent(typeof(UDPConnector))]
 	[RequireComponent(typeof(AudioSource))]
 	public class AudioReceive : MonoBehaviour {
 
@@ -16,11 +16,11 @@ namespace oi.plugin.audio {
 		private int clipChan = -1;
 		private int clipLen = 441000;
 		private int lastSamplePos = 0;
-		private IMPRESS_UDPClient oiudp;
+		private UDPConnector oiudp;
 
 		void Start () {
 			aud = GetComponent<AudioSource>();
-        	oiudp = GetComponent<IMPRESS_UDPClient>();
+        	oiudp = GetComponent<UDPConnector>();
 			aud.loop = true;
 			oiudp.isSender = false;
 		}
@@ -37,7 +37,7 @@ namespace oi.plugin.audio {
 				aud.Pause();
 		}
 
-		private void ParseData(IMPRESS_UDPClient udpSource) {
+		private void ParseData(UDPConnector udpSource) {
 			byte[] data = udpSource.GetNewData();
 
 			while (data != null) {
