@@ -46,7 +46,6 @@ namespace oi.plugin.audio {
 			int packetsThisFrame = 0;
 
 			while (data != null) {
-				/*
 				// Make sure there is data in the stream.
 				packetsThisFrame++;
 				if (data.Length != 0) {
@@ -88,12 +87,11 @@ namespace oi.plugin.audio {
 								lastSamplePos -= clipLen;
 						}
 					}
-				} */
+				}
 				receivedFrames++;
 				data = udpSource.GetNewData();
 			}
 
-			receivedFrames += packetsThisFrame;
 		}
 
 	}
