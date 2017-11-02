@@ -12,7 +12,6 @@ namespace oi.plugin.audio {
 
         public static byte[] Serialize(float[] samples, int freq, int chan) {
             byte[] data = null;
-
             using (MemoryStream stream = new MemoryStream()) {
                 using (BinaryWriter writer = new BinaryWriter(stream)) {
 

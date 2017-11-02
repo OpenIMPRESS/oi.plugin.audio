@@ -11,6 +11,7 @@ namespace oi.plugin.audio {
 	[RequireComponent(typeof(AudioSource))]
 	public class AudioReceive : MonoBehaviour {
 
+		public int receivedFrames = 0;
    		AudioSource aud;
 		private int clipFreq = -1;
 		private int clipChan = -1;
@@ -22,6 +23,7 @@ namespace oi.plugin.audio {
 			aud = GetComponent<AudioSource>();
         	oiudp = GetComponent<UDPConnector>();
 			aud.loop = true;
+			receivedFrames = 0;
 		}
 		
 		void Update () {
@@ -31,16 +33,22 @@ namespace oi.plugin.audio {
 
 
 		void UpdatePlayer() {
-			if (!aud.isPlaying) return;
-			if (aud.timeSamples > lastSamplePos && aud.timeSamples - lastSamplePos < 10000)
+			if (!aud.isPlaying) {
+				return;
+			}
+			if (aud.timeSamples > lastSamplePos && aud.timeSamples - lastSamplePos < 10000) {
 				aud.Pause();
+			}
 		}
 
 		private void ParseData(UDPConnector udpSource) {
 			byte[] data = udpSource.GetNewData();
+			int packetsThisFrame = 0;
 
 			while (data != null) {
+				/*
 				// Make sure there is data in the stream.
+				packetsThisFrame++;
 				if (data.Length != 0) {
 
 					int packetID = -1;
@@ -80,10 +88,12 @@ namespace oi.plugin.audio {
 								lastSamplePos -= clipLen;
 						}
 					}
-				}
-
+				} */
+				receivedFrames++;
 				data = udpSource.GetNewData();
 			}
+
+			receivedFrames += packetsThisFrame;
 		}
 
 	}
