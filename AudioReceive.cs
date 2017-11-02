@@ -22,7 +22,6 @@ namespace oi.plugin.audio {
 			aud = GetComponent<AudioSource>();
         	oiudp = GetComponent<UDPConnector>();
 			aud.loop = true;
-			oiudp.isSender = false;
 		}
 		
 		void Update () {

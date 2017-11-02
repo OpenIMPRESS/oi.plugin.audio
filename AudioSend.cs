@@ -16,7 +16,6 @@ namespace oi.plugin.audio {
 
 		void Start () {
         	oiudp = GetComponent<UDPConnector>();
-			oiudp.isSender = true;
 			mic = Microphone.Start(null, true, 60, recFreq);
 		}
 

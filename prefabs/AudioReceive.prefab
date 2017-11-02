@@ -134,13 +134,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
-  socketID: voip
-  remoteAddress: 
-  remotePort: 0
-  useMatchmakingServer: 1
-  isSender: 0
-  _serverHostname: mm.openimpress.org
-  _serverPort: 6312
+  SocketID: voip
+  UseMatchmakingServer: 1
+  ManualHostName: 
+  ManualPort: 0
+  IsSender: 0
+  connected: 0
 --- !u!114 &114951136016287336
 MonoBehaviour:
   m_ObjectHideFlags: 1
