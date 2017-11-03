@@ -9,25 +9,25 @@ namespace oi.plugin.audio {
     [RequireComponent(typeof(UDPConnector))]
     public class AudioSend : MonoBehaviour {
 
-        public int sentFrames = 0;
-        public int recFreq = 44100;
         private UDPConnector oiudp;
         private AudioClip mic;
-        public int lastRecSample = 0;
-        public bool connected = false;
-        public int pos;
-
+        private int lastRecSample = 0;
+        private int pos;
+        private int recFreq;
 
 
         void Start() {
             oiudp = GetComponent<UDPConnector>();
+            int minFreq;
+            int maxFreq;
+            Microphone.GetDeviceCaps(null, out minFreq, out maxFreq);
+            Debug.Log("oi.plugin.audio.AudioSend: Microphone minFreq: "+minFreq);
+            if (minFreq == 0) recFreq = 16000;
+            else recFreq = minFreq;
             mic = Microphone.Start(null, true, 60, recFreq);
-            sentFrames = 0;
         }
 
         void Update() {
-            connected = oiudp.connected;
-
             SendMicSamples();
         }
 
@@ -41,7 +41,6 @@ namespace oi.plugin.audio {
                 byte[] serialized = AudioSerializer.Serialize(samples, recFreq, mic.channels);
                 oiudp.SendData(serialized);
                 lastRecSample = pos;
-                sentFrames++;
             }
         }
     }

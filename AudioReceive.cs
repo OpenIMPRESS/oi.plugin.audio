@@ -11,7 +11,6 @@ namespace oi.plugin.audio {
 	[RequireComponent(typeof(AudioSource))]
 	public class AudioReceive : MonoBehaviour {
 
-		public int receivedFrames = 0;
    		AudioSource aud;
 		private int clipFreq = -1;
 		private int clipChan = -1;
@@ -23,7 +22,6 @@ namespace oi.plugin.audio {
 			aud = GetComponent<AudioSource>();
         	oiudp = GetComponent<UDPConnector>();
 			aud.loop = true;
-			receivedFrames = 0;
 		}
 		
 		void Update () {
@@ -88,7 +86,6 @@ namespace oi.plugin.audio {
 						}
 					}
 				}
-				receivedFrames++;
 				data = udpSource.GetNewData();
 			}
 
