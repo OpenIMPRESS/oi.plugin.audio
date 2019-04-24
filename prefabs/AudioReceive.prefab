@@ -109,7 +109,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -133,13 +133,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c9dcb62b1771d442887cc3a75535afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 0
+  debugLevel: 0
   SocketID: voip
   UseMatchmakingServer: 1
   ManualHostName: 
   ManualPort: 0
+  ManualListenPort: 0
   IsSender: 0
   connected: 0
+  guidSuffix: 
 --- !u!114 &114951136016287336
 MonoBehaviour:
   m_ObjectHideFlags: 1
